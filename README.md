@@ -14,9 +14,7 @@ Why?
 
 The problem is: popular cryptographic tools have laughable key stretching functionality.
 
-How many seconds after you enter your passwords you get response "bad password"
-when you enter wrong password when using LUKS, TrueCrypt, GnuPG? Do you think that this is enogh?
-Less than a second?
+How many seconds after you enter wrong passwords you get response "bad password", while using LUKS, TrueCrypt, GnuPG? Less than a second? Two seconds? Do you think that this is enogh?
 
 See this example:
 
@@ -27,7 +25,7 @@ See this example:
 * and encrypts the file data using the Twofish cipher with a 256-bit key
 
 ```
-$ gpg --output clear.txt  -vv -d MyFile.txt.gpg
+$ time gpg --output clear.txt  -vv -d MyFile.txt.gpg
 :symkey enc packet: version 4, cipher 10, s2k 3, hash 10
         salt ef1ae7a1f536715c, count 65011712 (255)
 gpg: TWOFISH encrypted data
@@ -49,7 +47,7 @@ sys     0m0.004s
 
 It takes about 1 second to decrypt the file after I wrote correct password!
 
-With wrong password it takes about 1 second too:
+With wrong password it takes about 1 second:
 
 ```
 :symkey enc packet: version 4, cipher 10, s2k 3, hash 10
