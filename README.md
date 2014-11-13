@@ -7,7 +7,9 @@ You need to install `scrypt` before to use this program:
 ```
 $ pip install --user scrypt
 ```
-Warning: your computer might freeze if you run this program (if you have little available RAM). <a href="http://en.wikipedia.org/wiki/Magic_SysRq_key" target="_blank">See here</a> how to take control of your Linux if X freezes.
+Warning: your computer may freeze if you run this program (if you have too little available RAM). It requires about 1GB of free RAM.
+
+<a href="http://en.wikipedia.org/wiki/Magic_SysRq_key" target="_blank">See here</a> how to take control of your Linux if X freezes.
 
 Why?
 ====
