@@ -69,6 +69,20 @@ From the `man gpg`:
 
 So, you can't enter number greater than 65011712 without modifying the source code.
 
+The same weak key stretching is used for protecting your GnuPG/PGP private keys!
+
+To see your `s2k-count`, type this command:
+
+```
+$ gpg --list-packets ~/.gnupg/secring.gpg | grep count
+        protect count: 65536 (96)
+        protect count: 65536 (96)
+        protect count: 65536 (96)
+        protect count: 65536 (96)
+```
+
+In this example the `s2k-count` is 65536 (default).
+
 Conspiracy?
 
 <blockquote>
