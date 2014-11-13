@@ -11,6 +11,8 @@ Warning: your computer may freeze if you run this program (if you have too littl
 
 <a href="http://en.wikipedia.org/wiki/Magic_SysRq_key" target="_blank">See here</a> how to take control of your Linux if X freezes.
 
+<img src="http://i.imgur.com/qdpSWw4.png" alt="" />
+
 Why?
 ====
 
