@@ -74,7 +74,7 @@ From the `man gpg`:
     nearest legal value.  This option is only meaningful if --s2k-mode is 3.
 ``
 
-So, you can't enter number greater than 65011712 without modifying the source code.
+So, you can't enter number greater than 65011712 <b>without modifying the source code</b>.
 
 The same weak key stretching is used for protecting your GnuPG/PGP private keys!
 
