@@ -3,6 +3,9 @@ Slow KDF
 
 Slow KDF for serious key stretching based on Scrypt.
 
+Why?
+====
+
 The problem is: popular cryptographic tools have laughable key stretching functionality.
 
 How many seconds after you enter your passwords you get response "bad password"
