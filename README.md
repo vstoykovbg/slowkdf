@@ -83,7 +83,7 @@ $ gpg --list-packets ~/.gnupg/secring.gpg | grep count
 
 In this example the `s2k-count` is 65536 (default).
 
-Conspiracy?
+<img src="http://i.imgur.com/K6dAvXn.jpg" alt="It's a conspiracy!" />
 
 <blockquote>
 <p>PBKDF2, just like TrueCrypt?  I hope you decide to have better password 
