@@ -81,6 +81,7 @@ From the `man gpg`:
 So, you can't enter number greater than 65011712 <b>without modifying the source code</b>.
 
 The same weak key stretching is used for protecting your GnuPG/PGP private keys!
+=====
 
 To see your `s2k-count`, type this command:
 
@@ -93,6 +94,19 @@ $ gpg --list-packets ~/.gnupg/secring.gpg | grep count
 ```
 
 In this example the `s2k-count` is 65536 (default).
+
+
+<blockquote>
+<p>The reason you can't make an S2K count over 65,011,712 is because values higher than that cannot be encoded into a single byte which is what RFC 4880 requires.
+
+<p>https://tools.ietf.org/html/rfc4880#section-3.7.1.3
+
+<p>Your problem is not with GnuPG, but with OpenPGP.
+
+<p>You could propose or implement a new S2K specifier type however: https://tools.ietf.org/html/rfc4880#section-10.1
+
+<p><cite><a href="http://www.reddit.com/r/crypto/comments/2m86df/gnupgs_key_stretching_is_laughable/cm2b9ep">/u/mitchellrj</a></cite>
+</blockquote>
 
 <img src="http://i.imgur.com/K6dAvXn.jpg" alt="It's a conspiracy!" />
 
