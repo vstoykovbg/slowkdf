@@ -13,14 +13,14 @@ def SlowKDF(password, salt, max_counter):
       digest = scrypt.hash(digest, salt, N = 1048576, r = 8, p = 1, buflen = 128)
     return digest
 
-mypass = getpass.getpass()
+mypass = getpass.getpass("Passphrase: ")
 
-if mypass != getpass.getpass("Password (again): "):
-  print "Wrong password."
+if mypass != getpass.getpass("Repeat passphrase: "):
+  print "ERROR: Passwords do not match."
   quit()
 
-if mypass != getpass.getpass("Password (and again): "):
-  print "Wrong password."
+if mypass != getpass.getpass("Repeat passphrase (again): "):
+  print "ERROR: Passphrases do not match."
   quit()
 
 mysalt = raw_input("Salt: ")
