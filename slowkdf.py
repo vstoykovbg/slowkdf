@@ -14,6 +14,15 @@ def SlowKDF(password, salt, max_counter):
     return digest
 
 mypass = getpass.getpass()
+
+if mypass != getpass.getpass("Password (again): "):
+  print "Wrong password."
+  quit()
+
+if mypass != getpass.getpass("Password (and again): "):
+  print "Wrong password."
+  quit()
+
 mysalt = raw_input("Salt: ")
 mynumber = int(input("Number of iterations: "))
 
