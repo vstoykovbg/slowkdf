@@ -10,7 +10,7 @@ def SlowKDF(password, salt, max_counter):
     while counter < max_counter:
         counter += 1
         print ("Iteration %s from %s..." % (counter, max_counter) )
-        digest = scrypt.hash(digest, salt, N = 1048576, r = 8, p = 1, buflen = 512)
+        digest = scrypt.hash(digest, salt, N = 1048576, r = 8, p = 1, buflen = 128)
     return digest
 
 mypass = getpass.getpass("Passphrase: ")
