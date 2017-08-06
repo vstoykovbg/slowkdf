@@ -163,7 +163,7 @@ My software versions:
     pinentry-gnome3 (pinentry) 0.9.7
     Ubuntu 16.04.3 LTS
 
-The old version of GnuPG (gpg (GnuPG) 1.4.20) works fine.
+The old version of GnuPG (`gpg (GnuPG) 1.4.20`) works fine.
 
 Conspirologists would say that this is part of the conspiracy to undermine the security of the popular open source security-related applications.
 
@@ -183,3 +183,46 @@ Don't forget the `-n` part, because it gives different result:
     valentin@computer:~$ echo "my loooooooong password" | sha512sum
     d7cbfb4629b661eef421474817587be5a6c7d96599f43638d32252ec88ba657314ba2dcb9c47bd2eeb6a24c8a9620f37ce570496eb758a6ae19ac30ef988eea4  -
     valentin@computer:~$ 
+
+Example
+========
+
+    valentin@computer:~$ slowkdf.py 
+    Passphrase: 
+    Repeat passphrase: 
+    Repeat passphrase (again): 
+    Salt: salt
+    Number of iterations: 1
+    Iteration 1 from 1...
+
+     == Version 1 ==
+
+
+    Digest in hex format: ea6a7a27acbb972a6c280d12cbd63fb60b37bc666bf368ea58edaac7e08a41063fa00aac7206e183dd2fdd64db01636668182fc2f145f67f45f4588f32742bfd24cf3131462792b228a11522a0d8d65609be1d47a8a1ccc4098b6491f2be0b769eafca253812bf408f493e05210cc0e80b3de496dcc854e98976c4b7763c6551
+
+
+    Digest in base64 format: 6mp6J6y7lypsKA0Sy9Y/tgs3vGZr82jqWO2qx+CKQQY/oAqscgbhg90v3WTbAWNmaBgvwvFF9n9F9FiPMnQr/STPMTFGJ5KyKKEVIqDY1lYJvh1HqKHMxAmLZJHyvgt2nq/KJTgSv0CPST4FIQzA6As95JbcyFTpiXbEt3Y8ZVE=
+
+
+     == Version 2 ==
+
+
+    Version 2 digest in hex format: b3d17366ac96465cbcaa843950dd9d77999055861f3550a11d61cb895cb54fc9d78c56dd6d053093fa43cfaa2eed628effa3555ee4f7a2adc4d068dc4004b5cf
+
+
+    Version 2 digest in base64 format: s9FzZqyWRly8qoQ5UN2dd5mQVYYfNVChHWHLiVy1T8nXjFbdbQUwk/pDz6ou7WKO/6NVXuT3oq3E0GjcQAS1zw==
+
+
+     == Version 1+2 ==
+
+
+    Version 1+2 digest in hex format: ea6a7a27acbb972a6c280d12cbd63fb60b37bc666bf368ea58edaac7e08a41063fa00aac7206e183dd2fdd64db01636668182fc2f145f67f45f4588f32742bfd24cf3131462792b228a11522a0d8d65609be1d47a8a1ccc4098b6491f2be0b769eafca253812bf408f493e05210cc0e80b3de496dcc854e98976c4b7763c6551b3d17366ac96465cbcaa843950dd9d77999055861f3550a11d61cb895cb54fc9d78c56dd6d053093fa43cfaa2eed628effa3555ee4f7a2adc4d068dc4004b5cf
+
+
+    Version 1+2 digest in base64 format: 6mp6J6y7lypsKA0Sy9Y/tgs3vGZr82jqWO2qx+CKQQY/oAqscgbhg90v3WTbAWNmaBgvwvFF9n9F9FiPMnQr/STPMTFGJ5KyKKEVIqDY1lYJvh1HqKHMxAmLZJHyvgt2nq/KJTgSv0CPST4FIQzA6As95JbcyFTpiXbEt3Y8ZVGz0XNmrJZGXLyqhDlQ3Z13mZBVhh81UKEdYcuJXLVPydeMVt1tBTCT+kPPqi7tYo7/o1Ve5PeircTQaNxABLXP
+
+    valentin@computer:~$ 
+
+The password used in this example is `my loooooooong password`.
+
+The length of the digest v2 is ok for the latest GnuPG version (with the password length limitation). The v1 base64 digest also should work fine. But the 'tinfoil hat edition' (version 1+2) works only with GnuPG 1 (tested it with `gpg (GnuPG) 1.4.20`).
