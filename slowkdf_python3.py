@@ -43,3 +43,11 @@ mydigest_v2 = sha512(mypass+mysalt+mydigest).digest()
 print ("\n\nVersion 2 digest in hex format:", binascii.b2a_hex(mydigest_v2).decode("utf-8"))
 
 print ("\n\nVersion 2 digest in base64 format:", binascii.b2a_base64(mydigest_v2).decode("utf-8"))
+
+print ("\n == Version 1+2 ==")
+
+mydigest_v1plus2=mydigest+mydigest_v2
+
+print ("\n\nVersion 1+2 digest in hex format:", binascii.b2a_hex(mydigest_v1plus2).decode("utf-8"))
+
+print ("\n\nVersion 1+2 digest in base64 format:", binascii.b2a_base64(mydigest_v1plus2).decode("utf-8"))
