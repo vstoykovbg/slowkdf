@@ -168,3 +168,18 @@ The old version of GnuPG (gpg (GnuPG) 1.4.20) works fine.
 Conspirologists would say that this is part of the conspiracy to undermine the security of the popular open source security-related applications.
 
 Read more about the conspiracy-relate stuff on Google: https://www.google.com/search?q=NSA%27s%20Decade-Long%20Plan%20to%20Undermine%20Encryption
+
+Workaround of the password length problem
+========
+
+You can use some hash function like sha512:
+
+    echo -n "my loooooooong password" | sha512sum
+
+Don't forget the `-n` part, because it gives different result:
+
+    valentin@computer:~$ echo -n "my loooooooong password" | sha512sum
+    f3a56f8ec032ea6d27f4ceff68e36ce9d25fc7042c737f2e4785f47d8267b5f3836987a0714921a8cc3f61dc1861523e92425ecdb90b522a81e0c82f4c5a224b  -
+    valentin@computer:~$ echo "my loooooooong password" | sha512sum
+    d7cbfb4629b661eef421474817587be5a6c7d96599f43638d32252ec88ba657314ba2dcb9c47bd2eeb6a24c8a9620f37ce570496eb758a6ae19ac30ef988eea4  -
+    valentin@computer:~$ 
