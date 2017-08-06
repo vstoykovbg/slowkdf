@@ -139,4 +139,32 @@ are going to convince you to do otherwise.  My other theory is people
 are really that stupid, whether they write SSH encryption code, PGP, or 
 TrueCrypt.</p><cite><a target="_blank" href="http://www.metzdowd.com/pipermail/cryptography/2013-December/019048.html">Bill Cox</a></cite></blockquote>
 
+Changes to the key with GnuPG 1 are invisible to GnuPG 2!
+========
 
+I tested it. First, I changed the password of my key with gpg (GnuPG 1) and then tried to use gpg2. I confirmed that the two programs now require different passwords for the same key.
+
+Then, I also changed the password with gpg2. These changes are seen only by gpg2.
+
+Discussion on Reddit: https://www.reddit.com/r/sysadmin/comments/6rzrut/changes_to_the_key_with_gnupg_1_are_invisible_to/
+
+Please make sure that you are not keeping or exporting (backing up) the other version of your key with a weaker password!
+
+GnuPG 2.1.11 does not accept long passwords
+========
+
+In my version of GnuPG it does not accept passwords longer than 255 characters (ASCII). Just tested it again. It says:
+
+    Passphrase too long
+
+My software versions:
+    gpg (GnuPG) 2.1.11
+    libgcrypt 1.6.5
+    pinentry-gnome3 (pinentry) 0.9.7
+    Ubuntu 16.04.3 LTS
+
+The old version of GnuPG (gpg (GnuPG) 1.4.20) works fine.
+
+Conspirologists would say that this is part of the conspiracy to undermine the security of the popular open source security-related applications.
+
+Read more about the conspiracy-relate stuff on Google: https://www.google.com/search?q=NSA%27s%20Decade-Long%20Plan%20to%20Undermine%20Encryption
