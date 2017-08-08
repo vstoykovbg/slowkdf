@@ -158,6 +158,7 @@ In my version of GnuPG it does not accept passwords longer than 255 characters (
     Passphrase too long
 
 My software versions:
+
     gpg (GnuPG) 2.1.11
     libgcrypt 1.6.5
     pinentry-gnome3 (pinentry) 0.9.7
