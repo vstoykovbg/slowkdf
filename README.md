@@ -23,6 +23,13 @@ Warning: your computer may freeze if you run this program (if you have too littl
 
 <img src="http://i.imgur.com/qdpSWw4.png" alt="" />
 
+Updated version
+====
+
+The difference between v1 and v2 digest is that v2 is protected against hypothetical loss of entropy (due to repeated hashing with scrypt) with additional `sha512(key+salt+digest_v1)`.
+
+I recommend using the `Version 2 digest in base64 format` or `Version 1+2 digest in base64 format` (if your application allow such long passwords - GnuPG 2 does not allow, you may use GnuPG 1!).
+
 Why?
 ====
 
