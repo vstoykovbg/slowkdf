@@ -37,8 +37,6 @@ The problem is: popular cryptographic tools have laughable key stretching functi
 
 How many seconds after you enter wrong passwords you get response "bad password", while using LUKS, TrueCrypt, GnuPG? Less than a second? Two seconds? Do you think that this is enogh?
 
-WTF? There is a huge bug in GnuPG - your private keys are not protected by the desired key stretching: <a href="https://www.reddit.com/r/crypto/comments/6y0eug/dsa_keys_may_be_between_1024_and_3072_bits_long/dmkeke8/">I know this really needs to be super clear for everyone to see. Due to a bug, GPG completely ignored your S2K settings and isn't giving you the protection you asked for.</a>
-
 See this example:
 
 ```$ gpg -vv -c --force-mdc --s2k-mode 3 --s2k-count 65011712 --s2k-digest-algo SHA512 --cipher-algo TWOFISH MyFile.txt```
@@ -114,6 +112,10 @@ $ gpg --list-packets ~/.gnupg/secring.gpg | grep count
 
 In this example the `s2k-count` is 65536 (default).
 
+And it also do not work as documented!
+=====
+
+There is a huge bug in GnuPG - your private keys are not protected by the desired key stretching: <a href="https://www.reddit.com/r/crypto/comments/6y0eug/dsa_keys_may_be_between_1024_and_3072_bits_long/dmkeke8/">I know this really needs to be super clear for everyone to see. Due to a bug, GPG completely ignored your S2K settings and isn't giving you the protection you asked for.</a>
 
 <blockquote>
 <p>The reason you can't make an S2K count over 65,011,712 is because values higher than that cannot be encoded into a single byte which is what RFC 4880 requires.
