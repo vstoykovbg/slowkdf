@@ -37,7 +37,7 @@ The problem is: popular cryptographic tools have laughable key stretching functi
 
 How many seconds after you enter wrong passwords you get response "bad password", while using LUKS, TrueCrypt, GnuPG? Less than a second? Two seconds? Do you think that this is enogh?
 
-WTF? There is a huge bug in GnuPG - your private keys are not protected by the desired key stretching: <a href-"https://www.reddit.com/r/crypto/comments/6y0eug/dsa_keys_may_be_between_1024_and_3072_bits_long/dmkeke8/">I know this really needs to be super clear for everyone to see. Due to a bug, GPG completely ignored your S2K settings and isn't giving you the protection you asked for.</a>
+WTF? There is a huge bug in GnuPG - your private keys are not protected by the desired key stretching: <a href="https://www.reddit.com/r/crypto/comments/6y0eug/dsa_keys_may_be_between_1024_and_3072_bits_long/dmkeke8/">I know this really needs to be super clear for everyone to see. Due to a bug, GPG completely ignored your S2K settings and isn't giving you the protection you asked for.</a>
 
 See this example:
 
