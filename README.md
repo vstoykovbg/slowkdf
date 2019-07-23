@@ -115,7 +115,36 @@ In this example the `s2k-count` is 65536 (default).
 And it also do not work as documented!
 =====
 
-There is a huge bug in GnuPG - your private keys are not protected by the desired key stretching: <a href="https://www.reddit.com/r/crypto/comments/6y0eug/dsa_keys_may_be_between_1024_and_3072_bits_long/dmkeke8/">I know this really needs to be super clear for everyone to see. Due to a bug, GPG completely ignored your S2K settings and isn't giving you the protection you asked for.</a>
+There is a huge bug in GnuPG - <a href="https://www.reddit.com/r/crypto/comments/6y0eug/dsa_keys_may_be_between_1024_and_3072_bits_long/dmkeke8/">your private keys are not protected by the desired key stretching</a>:
+
+<blockquote>
+<p>I know I replied to you above about this, but this really needs to be super clear for everyone to see. <a href="https://dev.gnupg.org/T1800">Due to a bug</a>, <b>GPG completely ignored your S2K settings and isn't giving you the protection you asked for</b>. You can see this for yourself:
+
+```
+$ gpg2 --export-secret-key | gpg2 --list-packets > packets
+```
+
+<p>Running your exact command and then inspecting the packets gives me this:
+
+```
+# off=0 ctb=95 tag=5 hlen=3 plen=966
+:secret key packet:
+        version 4, algo 1, created 1504562320, expires 0
+        pkey[0]: [2048 bits]
+        pkey[1]: [17 bits]
+        iter+salt S2K, algo: 7, SHA1 protection, hash: 2, salt: 8792DC994E02F5DB
+        protect count: 16252928 (223)
+        protect IV:  ff 9d 2c 80 7c e4 1d 0c 6a 41 17 7f 41 1e 03 51
+        skey[2]: [v4 protected]
+        keyid: F021CA39AB2D856D
+```
+
+<p>Notice it's using AES-128 (<a href="https://tools.ietf.org/html/rfc4880#section-9">algo 7</a>), SHA-1 (hash 2), and 16 million iterations instead of 65 million. That's why it's able to process your passphrase so quickly rather than taking a few seconds like it should.
+
+<p>This security bug is about 3 years old now.
+
+<p><cite><a href="https://www.reddit.com/r/crypto/comments/6y0eug/dsa_keys_may_be_between_1024_and_3072_bits_long/dmkeke8/">/u/skeeto</a></cite>
+</blockquote>
 
 <blockquote>
 <p>The reason you can't make an S2K count over 65,011,712 is because values higher than that cannot be encoded into a single byte which is what RFC 4880 requires.
