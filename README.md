@@ -233,7 +233,7 @@ When I use gpg (GnuPG 2.2.4) with the option `--pinentry-mode loopback` it asks 
 
 When using options `--passphrase-file passphrase.txt --pinentry-mode loopback` it allowed **larger than 255 bytes** passwords (for example, 27665 bytes). When tried with 30185 bytes password I got error message `gpg: Warning: using insecure memory!` but it worked. When tried with 34728 bytes password I got error message `gpg: Fatal: out of core in secure memory while allocating 32800 bytes` and the program refused to continue.
 
-Writing the password in a file is not very secure, especially when the filesystem is not `tmpfs` and not full disk encryption is used.
+Writing the password in a file is not very secure, especially when the filesystem is not `tmpfs` and full disk encryption is not used.
 
 Workaround of the password length problem
 ========
