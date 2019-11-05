@@ -190,7 +190,7 @@ Discussion on Reddit: https://www.reddit.com/r/sysadmin/comments/6rzrut/changes_
 
 Please make sure that you are not keeping or exporting (backing up) the other version of your key with a weaker password!
 
-GnuPG 2.1.11 does not accept long passwords
+GnuPG 2.1.11 does not accept long passwords (UPDATE: GnuPG 2.2.4 on Ubuntu accept long passwords)
 ========
 
 In my version of GnuPG it does not accept passwords longer than 255 characters (ASCII). Just tested it again. It says:
@@ -209,6 +209,26 @@ The old version of GnuPG (`gpg (GnuPG) 1.4.20`) works fine.
 Conspirologists would say that this is part of the conspiracy to undermine the security of the popular open source security-related applications.
 
 Read more about the conspiracy-relate stuff on Google: https://www.google.com/search?q=NSA%27s%20Decade-Long%20Plan%20to%20Undermine%20Encryption
+
+**UPDATE: GnuPG 2.2.4 on Ubuntu accept long passwords**
+
+Tested it with software versions:
+
+    gpg (GnuPG) 2.2.4
+    libgcrypt 1.8.1
+    pinentry-gnome3 (pinentry) 1.1.0
+    Ubuntu 18.04.3 LTS
+And it works with an ASCII password with 495 charsacters. If I enter more characters there is an error message:
+
+    gpg: problem with the agent: Too much data for IPC layer
+    gpg: error creating passphrase: Operation cancelled
+
+The documentation says:
+
+    There is no limit on the length of a passphrase, and it should be carefully chosen.
+
+This is not the case on my system.
+
 
 Workaround of the password length problem
 ========
@@ -266,4 +286,4 @@ Example
 
 The password used in this example is `my loooooooong password`.
 
-The length of the digest v2 is ok for the latest GnuPG version (with the password length limitation). The v1 base64 digest also should work fine. But the 'tinfoil hat edition' (version 1+2) works only with GnuPG 1 (tested it with `gpg (GnuPG) 1.4.20`).
+The length of the digest v2 is ok for the latest GnuPG version (with the password length limitation). The v1 base64 digest also should work fine. But the 'tinfoil hat edition' (version 1+2) works only with GnuPG 1 (tested it with `gpg (GnuPG) 1.4.20`). (Update: on GnuPG 2.2.4 the limit is lifted to 495 characters.)
