@@ -291,4 +291,4 @@ Example
 
 The password used in this example is `my loooooooong password`.
 
-The length of the digest v2 is ok for the latest GnuPG version (with the password length limitation). The v1 base64 digest also should work fine. But the 'tinfoil hat edition' (version 1+2) works only with GnuPG 1 (tested it with `gpg (GnuPG) 1.4.20`). (Update: on GnuPG 2.2.4 the limit is lifted to 495 characters.)
+The length of the digest v2 is ok for the latest GnuPG version (with the password length limitation). The v1 base64 digest also should work fine. But the 'tinfoil hat edition' (version 1+2) works only with GnuPG 1 (tested it with `gpg (GnuPG) 1.4.20`). (Update: on GnuPG 2.2.4 the limit is lifted to 495 characters, however it is still 255 bytes if option `--pinentry-mode loopback` is used; the limit is bigger with `--passphrase-file passphrase.txt --pinentry-mode loopback`.)
