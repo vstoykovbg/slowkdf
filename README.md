@@ -229,7 +229,7 @@ The documentation says:
 
 This is not the case on my system.
 
-When I use gpg (GnuPG 2.2.4) with the option `--pinentry-mode loopback` it asks for the password in the console (without popping up a dialog box) and the limit is still 255 ASCII characters. When I tried to replace 4 characters with Unicode the limit become 251 characters. This means that **the limit is in bytes (255 bytes), not in characters.***
+When I use gpg (GnuPG 2.2.4) with the option `--pinentry-mode loopback` it asks for the password in the console (without popping up a dialog box) and the limit is still 255 ASCII characters. When I tried to replace 4 characters with Unicode the limit become 251 characters. This means that **the limit is in bytes (255 bytes), not in characters.**
 
 
 Workaround of the password length problem
