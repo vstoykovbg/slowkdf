@@ -300,6 +300,4 @@ On some old computers too much CPU load may lead to overheating and automatic sh
 
 The script `cpulimit.bash` is searching for a python script with `slowkdf` in the name. There is a limitation - it slows down only the first script with such a name.
 
-I found a bug - it says "Stopped" but it continue to run and return the data to `stdout`:
-
-<iframe width="566" height="522" src="https://www.youtube.com/embed/LN_DjgREXjU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+I found a bug - it says "Stopped" but it continue to run and return the data to `stdout`: https://www.youtube.com/watch?v=LN_DjgREXjU
