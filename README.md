@@ -292,3 +292,14 @@ Example
 The password used in this example is `my loooooooong password`.
 
 The length of the digest v2 is ok for the latest GnuPG version (with the password length limitation). The v1 base64 digest also should work fine. But the 'tinfoil hat edition' (version 1+2) works only with GnuPG 1 (tested it with `gpg (GnuPG) 1.4.20`). (Update: on GnuPG 2.2.4 the limit is lifted to 495 characters, however it is still 255 bytes if option `--pinentry-mode loopback` is used; the limit is bigger with `--passphrase-file passphrase.txt --pinentry-mode loopback`.)
+
+Limiting the CPU load to prevent overheating
+====
+
+On some old computers too much CPU load may lead to overheating and automatic shutdown of the computer.
+
+The script `cpulimit.bash` is searching for a python script with `slowkdf` in the name. There is a limitation - it slows down only the first script with such a name.
+
+I found a bug - it says "Stopped" but it continue to run and return the data to `stdout`:
+
+<iframe width="566" height="522" src="https://www.youtube.com/embed/LN_DjgREXjU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
