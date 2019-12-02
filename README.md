@@ -301,3 +301,51 @@ On some old computers too much CPU load may lead to overheating and automatic sh
 The script `cpulimit.bash` is searching for a python script with `slowkdf` in the name. There is a limitation - it slows down only the first script with such a name.
 
 I found a bug - it says "Stopped" but it continue to run and return the data to `stdout`: https://www.youtube.com/watch?v=LN_DjgREXjU
+
+Testing scrypt modules for speed
+====
+
+```
+$ ./scrypt_test.py 
+**** Testing with Scrypt from scrypt...
+File of locally installed scrypt: /home/valentin/.local/lib/python3.6/site-packages/scrypt/__init__.py
+Iteration 1 from 1...
+*** Time:  4.310204744338989 **********************************************
+Digest in base64 format: R/5/ga5KTwm8WIs9FquqJxxoIACiN8PGSTv9GvDrJO9OOhjEcf95kLJgucAXSWK2cGq+kAW3JqENKybD8tw3WOFnvPVAMOo/Zku/8kizjmYGEuhd/tOKg2hKgnnbUrsQTAZ9JYxWhR7flK7ygSmaNjZOXNObDNwAN0oXqFpbQ4k=
+
+
+
+
+**** Testing with Scrypt from scrypt (old version)...
+File of scrypt: /usr/lib/python3/dist-packages/scrypt.py
+Iteration 1 from 1...
+*** Time:  4.284672498703003 **********************************************
+Digest in base64 format: R/5/ga5KTwm8WIs9FquqJxxoIACiN8PGSTv9GvDrJO9OOhjEcf95kLJgucAXSWK2cGq+kAW3JqENKybD8tw3WOFnvPVAMOo/Zku/8kizjmYGEuhd/tOKg2hKgnnbUrsQTAZ9JYxWhR7flK7ygSmaNjZOXNObDNwAN0oXqFpbQ4k=
+
+
+
+
+**** Testing with Scrypt from Cryptodome...
+Iteration 1 from 1...
+*** Time:  5.6815948486328125 **********************************************
+Digest in base64 format: R/5/ga5KTwm8WIs9FquqJxxoIACiN8PGSTv9GvDrJO9OOhjEcf95kLJgucAXSWK2cGq+kAW3JqENKybD8tw3WOFnvPVAMOo/Zku/8kizjmYGEuhd/tOKg2hKgnnbUrsQTAZ9JYxWhR7flK7ygSmaNjZOXNObDNwAN0oXqFpbQ4k=
+
+
+
+
+**** Testing with Scrypt from hashlib...
+Iteration 1 from 1...
+*** Time:  4.702378988265991 **********************************************
+Digest in base64 format: R/5/ga5KTwm8WIs9FquqJxxoIACiN8PGSTv9GvDrJO9OOhjEcf95kLJgucAXSWK2cGq+kAW3JqENKybD8tw3WOFnvPVAMOo/Zku/8kizjmYGEuhd/tOKg2hKgnnbUrsQTAZ9JYxWhR7flK7ygSmaNjZOXNObDNwAN0oXqFpbQ4k=
+
+
+
+
+**** Testing with Scrypt from hazmat...
+Iteration 1 from 1...
+*** Time:  4.770408630371094 **********************************************
+Digest in base64 format: R/5/ga5KTwm8WIs9FquqJxxoIACiN8PGSTv9GvDrJO9OOhjEcf95kLJgucAXSWK2cGq+kAW3JqENKybD8tw3WOFnvPVAMOo/Zku/8kizjmYGEuhd/tOKg2hKgnnbUrsQTAZ9JYxWhR7flK7ygSmaNjZOXNObDNwAN0oXqFpbQ4k=
+
+```
+
+Looks like the scrypt module from Ubuntu and the module installed with `pip3 install scrypt` are the best. My CPU is `Intel(R) Core(TM) i3-2100 CPU @ 3.10GHz`.
