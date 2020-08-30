@@ -3,6 +3,8 @@ Slow KDF
 
 Slow KDF for serious key stretching based on Scrypt.
 
+ :point_right: This is my new key stretching script: [Doubleslow Keystretcher](https://github.com/vstoykovbg/doubleslow)
+
 You need to install `scrypt` before to use this program:
 ```
 $ pip install --user scrypt
