@@ -367,4 +367,4 @@ The scrypt digest is (in hex format):
 
 This is true for any salt, N, r, p.
 
-However, versions 2 and 3 of the output of the `SlowKDF` are different.
+However, versions 2 and 3 of the output from the `SlowKDF` script are different.
