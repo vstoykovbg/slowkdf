@@ -358,10 +358,13 @@ Collisions
 These two passwords produce the same scrypt digiest (I learned it from [here](https://mathiasbynens.be/notes/pbkdf2-hmac#comment-3)):
 
 ```PBKDF2-HMAC-SHA256-fail-affects-scrypt-no-security-issue-bGoDFpr8```
+
 ```;`B3nR6wQ2-_LSg"mH #yszm`[#z8B&L```
 
 The output digest is:
 
 `2bbb625cbb0201756397c93fdee9d902fe92c176c77e50ab5016b9db85dacfd7c5478820a2b8148f8f3790a7a12e63469eeda87459d68ea505826d0bd94c245570e39da1784327b2eed33b81f2da8ca850c2707139df81d52bc6610c07f663bec69d2009e416985def67f73e8a15dbce832bbd0d53dececa1f83a04c94927cce`
+
+This is true for any salt, N, r, p.
 
 However, versions 2 and 3 of the output of the `SlowKDF` are different.
