@@ -30,7 +30,7 @@ Updated version
 
 The difference between v1 and v2 digest is that v2 is protected against hypothetical loss of entropy (due to repeated hashing with scrypt) with additional `sha512(key+salt+digest_v1)`.
 
-I recommend using the `Version 2 digest in base64 format` or `Version 1+2 digest in base64 format` (if your application allow such long passwords - GnuPG 2 does not allow, you may use GnuPG 1!).
+I recommend using the `Version 2 digest in base64 format`. `Version 1+2 digest in base64 format` is too long for some applications like some versions of GnuPG (with some settings).
 
 Why?
 ====
