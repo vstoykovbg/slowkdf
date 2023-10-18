@@ -237,6 +237,8 @@ When using options `--passphrase-file passphrase.txt --pinentry-mode loopback` i
 
 Writing the password in a file is not very secure, especially when the filesystem is not `tmpfs` and full disk encryption is not used.
 
+Update: it stopped to accept long passwords, but after I killed the pinentry process it works again. It's better to not supply to GnuPG long passwords, instead hash your long passwords and supply the output of the hash function (do not forget that the console history is saved in typical systems in more than one place, not only `~/.bash_history`, also Konsole, Gnome Terminal and clipboard managers can save your secrets you copy/paste.
+
 Workaround of the password length problem
 ========
 
@@ -252,7 +254,7 @@ Don't forget the `-n` part, because it gives different result:
     d7cbfb4629b661eef421474817587be5a6c7d96599f43638d32252ec88ba657314ba2dcb9c47bd2eeb6a24c8a9620f37ce570496eb758a6ae19ac30ef988eea4  -
     valentin@computer:~$ 
 
-⚠️ WARNING: Typically the commands are saved in a "hitory files" somewhere on the hard drive and if you type your passphrase like in the above example it may be saved. Gnome Terminal and Konsole are saving history (or not - if you disable this feature), also Bash typically is saving the history of the typed commands in the file `~/.bash_history`. If you use a Live distribution without a feature to save a session and without swap it's relatively safe to type your passphrase. But what you see on the monitor can be recorder with security or other cameras.
+⚠️ WARNING: Typically the commands are saved in a "hitory files" somewhere on the hard drive and if you type your passphrase like in the above example it may be saved. Gnome Terminal and Konsole are saving history (or not - if you disable this feature), also Bash typically is saving the history of the typed commands in the file `~/.bash_history`. If you use a Live distribution without a feature to save a session and without swap it's relatively safe to type your passphrase. But what you see on the monitor can be recorder with security or other cameras. Also the clipboard manager may keep logs on the hard drive.
 
 Example
 ========
