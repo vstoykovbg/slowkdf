@@ -237,7 +237,7 @@ When using options `--passphrase-file passphrase.txt --pinentry-mode loopback` i
 
 Writing the password in a file is not very secure, especially when the filesystem is not `tmpfs` and full disk encryption is not used.
 
-Update: it stopped to accept long passwords, but after I killed the pinentry process it works again. It's better to not supply to GnuPG long passwords, instead hash your long passwords and supply the output of the hash function (do not forget that the console history is saved in typical systems in more than one place, not only `~/.bash_history`, also Konsole, Gnome Terminal and clipboard managers can save your secrets you copy/paste.
+Update: it stopped to accept long passwords, but after I killed the pinentry process it works again. It's better to not supply to GnuPG long passwords, instead hash your long passwords and supply the output of the hash function (do not forget that the console history is saved in typical systems in more than one place, not only `~/.bash_history`, also Konsole and Gnome Terminal save your secrets that you type or see on the console. Morever, clipboard managers can save your secrets you copy/paste.
 
 Workaround of the password length problem
 ========
