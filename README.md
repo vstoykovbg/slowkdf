@@ -32,6 +32,8 @@ The difference between v1 and v2 digest is that v2 is protected against hypothet
 
 I recommend using the `Version 2 digest in base64 format`. `Version 1+2 digest in base64 format` is too long for some applications like some versions of GnuPG (with some settings).
 
+Also I recommend my new key stretching script [Doubleslow Keystretcher](https://github.com/vstoykovbg/doubleslow) instead of SlowKDF.
+
 Why?
 ====
 
