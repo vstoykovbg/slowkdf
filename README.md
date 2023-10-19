@@ -274,6 +274,11 @@ Or you can use sha512sum and use only the first 127 characters (sha512sum produc
     RFC1751 mnemonic: VEAL NEE STAY FIND OFF REB MEG KICK MUCH ROOF RAY DOES ROSA WOVE MUTT BLAT RIO HESS ABEL OR JAM AWK ELSE WELT FOAL AMID TEAL SORE HAAG RUNT RAKE WHET DRUB OW FUN JAB HACK FAR LOWE DEFY LYNN FUN FLAM BAY COT HIRE JOCK LOS
     valentin@computer:~$ 
 
+Alternatively:
+
+    $ sha512sum tmpfs/long.txt | cut -f1 -d\  | xxd -r -p | base64 -w 0 ; echo
+    86VvjsAy6m0n9M7/aONs6dJfxwQsc38uR4X0fYJntfODaYegcUkhqMw/YdwYYVI+kkJezbkLUiqB4MgvTFoiSw==
+
 One round of sha-512 can not be considered a key stretching, it's just a workaround to fit a long password/passphrase into a legacy system. A script from [Mnemonic Hashes](https://github.com/vstoykovbg/mnemonic-hashes) can be used to make a web password. For example, you can get the first 4 words of the BIP39 output or the Base62 version of the Blake2b-64 or Blake2b-128 hash.
 
 ⚠️ WARNING: Typically the commands are saved in a "hitory files" somewhere on the hard drive and if you type your passphrase like in the above example it may be saved. Gnome Terminal and Konsole are saving history (or not - if you disable this feature), also Bash typically is saving the history of the typed commands in the file `~/.bash_history`. If you use a Live distribution without a feature to save a session and without swap it's relatively safe to type your passphrase. But what you see on the monitor can be recorder with security or other cameras. Also the clipboard manager may keep logs on the hard drive. In the above example I am writing the password on a tmpfs, which is relatively safe (more safe than on the hard drive where the passphrase when it may persist afeter the deletion of the file). I am not using swap or use encrypted swap (with a key that is forgotten when the power of the RAM memory is turned off).
