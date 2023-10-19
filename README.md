@@ -244,19 +244,39 @@ Update: it stopped to accept long passwords, but after I killed the pinentry pro
 Workaround of the password length problem
 ========
 
-You can use some hash function like sha512:
+You can use some hash function like sha256:
 
-    echo -n "my loooooooong password" | sha512sum
+    echo -n "my loooooooong password" | sha256sum
 
 Don't forget the `-n` part, because it gives different result:
 
-    valentin@computer:~$ echo -n "my loooooooong password" | sha512sum
-    f3a56f8ec032ea6d27f4ceff68e36ce9d25fc7042c737f2e4785f47d8267b5f3836987a0714921a8cc3f61dc1861523e92425ecdb90b522a81e0c82f4c5a224b  -
-    valentin@computer:~$ echo "my loooooooong password" | sha512sum
-    d7cbfb4629b661eef421474817587be5a6c7d96599f43638d32252ec88ba657314ba2dcb9c47bd2eeb6a24c8a9620f37ce570496eb758a6ae19ac30ef988eea4  -
+    valentin@computer:~$ echo -n "my loooooooong password" | sha256sum 
+    8416b2bc52278595f1283bcf524b79753f146d18989fc4d7bc11edc56a753808  -
+    valentin@computer:~$ echo    "my loooooooong password" | sha256sum 
+    ea492b596aa905a96f236311fade318de7c3117a0a6d22008e1cfa29498abef8  -
     valentin@computer:~$ 
 
-⚠️ WARNING: Typically the commands are saved in a "hitory files" somewhere on the hard drive and if you type your passphrase like in the above example it may be saved. Gnome Terminal and Konsole are saving history (or not - if you disable this feature), also Bash typically is saving the history of the typed commands in the file `~/.bash_history`. If you use a Live distribution without a feature to save a session and without swap it's relatively safe to type your passphrase. But what you see on the monitor can be recorder with security or other cameras. Also the clipboard manager may keep logs on the hard drive.
+Or you can use sha512sum and use only the first 127 characters (sha512sum produces 128 characters when the output is in hex format). You can use also `mnemonic-sha512.py` ([from here](https://github.com/vstoykovbg/mnemonic-hashes)) to produce a base64, base62 or Base58Check version of the hash (the longest is only 93 characters):
+
+    valentin@computer:~$ echo -n "my loooooooong password" > tmpfs/long.txt
+    valentin@computer:~$ mnemonic-sha512.py tmpfs/long.txt 
+
+    === SHA-512 hash: ===
+
+    Hex: f3a56f8ec032ea6d27f4ceff68e36ce9d25fc7042c737f2e4785f47d8267b5f3836987a0714921a8cc3f61dc1861523e92425ecdb90b522a81e0c82f4c5a224b
+    Base64: 86VvjsAy6m0n9M7/aONs6dJfxwQsc38uR4X0fYJntfODaYegcUkhqMw/YdwYYVI+kkJezbkLUiqB4MgvTFoiSw==
+    Base62: uZJwVX3oRpZtZWrvrNFHm8JLFzmhmvEMLwOBiVv4FMUyBLcdMcVpnrhijplAuMVVDARwfPvz9SteW7SQQYD8LT
+    Base58Check: YsoQeY8Gep6UP5a7upPAQcPCnPjjn7ezVTU7yNpXrGLJydg4WApwSk1izGhTzNnvzTgurT5xwZHCTmPLRP1VbYPN56ukS
+    BIP39 mnemonic (1): victory clock together lesson concert custom panther oil youth either swamp squirrel chalk toe awful mobile left impulse thumb trophy subway critic style hen
+    BIP39 mnemonic (2): lock equip trend tip must stamp couch umbrella swing seek fee large category control dad cannon fall favorite join motion visit code matrix horror
+     * This digest is 512 bits long, so it's split in two parts
+       and this way two BIP39 mnemonic codes are produced.
+    RFC1751 mnemonic: VEAL NEE STAY FIND OFF REB MEG KICK MUCH ROOF RAY DOES ROSA WOVE MUTT BLAT RIO HESS ABEL OR JAM AWK ELSE WELT FOAL AMID TEAL SORE HAAG RUNT RAKE WHET DRUB OW FUN JAB HACK FAR LOWE DEFY LYNN FUN FLAM BAY COT HIRE JOCK LOS
+    valentin@computer:~$ 
+
+One round of sha-512 can not be considered a key stretching, it's just a workaround to fit a long password/passphrase into a legacy system. A script from [Mnemonic Hashes](https://github.com/vstoykovbg/mnemonic-hashes) can be used to make a web password. For example, you can get the first 4 words of the BIP39 output or the Base62 version of the Blake2b-64 or Blake2b-128 hash.
+
+⚠️ WARNING: Typically the commands are saved in a "hitory files" somewhere on the hard drive and if you type your passphrase like in the above example it may be saved. Gnome Terminal and Konsole are saving history (or not - if you disable this feature), also Bash typically is saving the history of the typed commands in the file `~/.bash_history`. If you use a Live distribution without a feature to save a session and without swap it's relatively safe to type your passphrase. But what you see on the monitor can be recorder with security or other cameras. Also the clipboard manager may keep logs on the hard drive. In the above example I am writing the password on a tmpfs, which is relatively safe (more safe than on the hard drive where the passphrase when it may persist afeter the deletion of the file). I am not using swap or use encrypted swap (with a key that is forgotten when the power of the RAM memory is turned off).
 
 Example
 ========
